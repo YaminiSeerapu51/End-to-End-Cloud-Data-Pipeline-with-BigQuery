@@ -12,17 +12,17 @@
 3. Should we encourage users to write longer, more detailed reviews?
 
 # Tech Stack
-- **Cloud Data Warehouse:** Google BigQuery
-- **Data Storage:** Google Cloud Storage (GCS)
-- **Programming:** Python (Pandas, scipy.stats)
-- **Visualization:** Looker Studio
-- **Statistical Analysis:** Hypothesis Testing (T-test)
+- Cloud Data Warehouse: Google BigQuery
+- Data Storage: Google Cloud Storage (GCS)
+- Programming: Python (Pandas, scipy.stats)
+- Visualization: Looker Studio
+- Statistical Analysis: Hypothesis Testing (T-test)
 
 # Expected Business Impact
-- **Product Strategy:** Data-driven decisions on review encouragement
-- **User Experience:** Optimize review collection process
-- **App Store Optimization:** Improve overall app ratings
-- **Resource Allocation:** Focus efforts on high-impact review strategies
+- Product Strategy: Data-driven decisions on review encouragement
+- User Experience: Optimize review collection process
+- App Store Optimization: Improve overall app ratings
+- Resource Allocation: Focus efforts on high-impact review strategies
 
 # Project Architecture
 
