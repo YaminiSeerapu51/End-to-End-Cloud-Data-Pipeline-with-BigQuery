@@ -68,43 +68,43 @@ Raw Data (Kaggle) → Python Script → GCS Bucket → BigQuery Raw Table
 # Key Metrics & KPIs
 
 # Primary Metrics
-- **Average Rating by Sentiment**: Positive vs Negative reviews
-- **Review Length Impact**: Correlation with star ratings
-- **Statistical Significance**: P-value from hypothesis testing
+- Average Rating by Sentiment: Positive vs Negative reviews
+- Review Length Impact: Correlation with star ratings
+- Statistical Significance: P-value from hypothesis testing
 
 # Secondary Metrics
-- **Total Reviews Analyzed:** Volume of data processed
-- **Sentiment Distribution:** Breakdown of positive/negative/neutral
-- **Rating Distribution:** 1-5 star rating patterns
+- Total Reviews Analyzed: Volume of data processed
+- Sentiment Distribution: Breakdown of positive/negative/neutral
+- Rating Distribution: 1-5 star rating patterns
 
 ---
 
 # Expected Outcomes
 
 # Statistical Findings
-- **Hypothesis Test Result:** P-value < 0.05 (statistically significant)
-- **Effect Size:** Quantified difference between sentiment groups
-- **Confidence Intervals:** Range of expected differences
+- Hypothesis Test Result: P-value < 0.05 (statistically significant)
+- Effect Size: Quantified difference between sentiment groups
+- Confidence Intervals: Range of expected differences
 
 # Business Recommendations
-1. **Encourage Positive Reviewers:** Prompt satisfied users to leave detailed reviews
-2. **Review Length Strategy:** Optimal review length for maximum impact
-3. **Sentiment Monitoring:** Track sentiment trends over time
-4. **Product Improvements:** Address common negative feedback themes
+1. Encourage Positive Reviewers: Prompt satisfied users to leave detailed reviews
+2. Review Length Strategy: Optimal review length for maximum impact
+3. Sentiment Monitoring: Track sentiment trends over time
+4. Product Improvements: Address common negative feedback themes
 
 # Skills Demonstrated
 
 # Technical Skills
-- **Cloud Data Warehousing:** BigQuery setup and management
-- **SQL Proficiency:** Complex queries, window functions, CTEs
-- **Python Programming:** Data manipulation, statistical analysis
-- **Data Visualization:** Dashboard creation and storytelling
+- Cloud Data Warehousing: BigQuery setup and management
+- SQL Proficiency: Complex queries, window functions, CTEs
+- Python Programming: Data manipulation, statistical analysis
+- Data Visualization: Dashboard creation and storytelling
 
 # Analytical Skills
-- **Hypothesis Testing:** Formal statistical methodology
-- **Business Analysis:** Translating data into actionable insights
-- **Data Quality:** Cleaning and validation processes
-- **Statistical Interpretation:** P-values, confidence intervals
+- Hypothesis Testing: Formal statistical methodology
+- Business Analysis: Translating data into actionable insights
+- Data Quality: Cleaning and validation processes
+- Statistical Interpretation: P-values, confidence intervals
 
 # Business Skills
 - **Problem Framing:** Clear business question definition
