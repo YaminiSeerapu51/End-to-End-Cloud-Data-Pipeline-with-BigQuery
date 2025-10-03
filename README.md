@@ -114,7 +114,6 @@ Raw Data (Kaggle) → Python Script → GCS Bucket → BigQuery Raw Table
 
 ## 📁 Project Structure
 ---
-```
 google_play_reviews_analysis/
 ├── README.md
 ├── data/
@@ -132,5 +131,4 @@ google_play_reviews_analysis/
 └── results/
     ├── statistical_results.md
     └── business_recommendations.md
-```
 ---
