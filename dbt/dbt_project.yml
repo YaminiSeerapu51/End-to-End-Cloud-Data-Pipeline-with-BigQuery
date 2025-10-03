@@ -1,0 +1,93 @@
+# dbt project configuration for Multi-Cloud ELT Data Warehouse
+name: 'unified_dw'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'unified_dw'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  unified_dw:
+    # Staging models (raw data ingestion)
+    staging:
+      +materialized: view
+      +schema: staging
+      
+    # Intermediate models (business logic transformations)
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+      
+    # Marts (final analytical models)
+    marts:
+      +materialized: table
+      +schema: analytics
+      core:
+        +materialized: table
+      finance:
+        +materialized: table
+      marketing:
+        +materialized: table
+      product:
+        +materialized: table
+
+# Test configurations
+tests:
+  +store_failures: true
+  +schema: test_failures
+
+# Snapshot configurations
+snapshots:
+  unified_dw:
+    +target_schema: snapshots
+    +strategy: timestamp
+    +updated_at: updated_timestamp
+
+# Variables for the project
+vars:
+  # Date range for incremental models
+  start_date: '2023-01-01'
+  end_date: '2023-12-31'
+  
+  # Business logic parameters
+  high_value_customer_threshold: 1000
+  medium_value_customer_threshold: 500
+  low_value_customer_threshold: 100
+  
+  # Marketing performance thresholds
+  excellent_roas_threshold: 4.0
+  good_roas_threshold: 2.0
+  breakeven_roas_threshold: 1.0
+  
+  # Product engagement thresholds
+  high_engagement_score: 70
+  medium_engagement_score: 40
+  
+# Seeds configuration
+seeds:
+  unified_dw:
+    +schema: seeds
+    +quote_columns: false
+
+# Documentation
+docs:
+  generate: true
+
+# Packages (add any dbt packages you want to use)
+# packages:
+#   - package: dbt-labs/dbt_utils
+#     version: 1.1.1

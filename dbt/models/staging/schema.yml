@@ -1,0 +1,160 @@
+version: 2
+
+sources:
+  - name: external_sources
+    description: External tables from Redshift and BigQuery
+    schema: external_sources
+    tables:
+      - name: ext_redshift_daily_sales
+        description: Daily sales summary from Redshift
+        columns:
+          - name: date_key
+            description: Date of the sales data
+            tests:
+              - not_null
+              - unique
+          - name: total_revenue
+            description: Total revenue for the day
+            tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+          - name: unique_customers
+            description: Number of unique customers
+            tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+
+      - name: ext_bigquery_marketing_daily
+        description: Daily marketing summary from BigQuery
+        columns:
+          - name: date_key
+            description: Date of the marketing data
+            tests:
+              - not_null
+              - unique
+          - name: total_spend
+            description: Total marketing spend for the day
+            tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+          - name: roas
+            description: Return on ad spend
+            tests:
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+
+  - name: processed
+    description: Processed data from native Snowflake tables
+    schema: processed
+    tables:
+      - name: daily_product_engagement
+        description: Daily product engagement metrics
+        columns:
+          - name: date_key
+            description: Date of the engagement data
+            tests:
+              - not_null
+              - unique
+          - name: active_users
+            description: Number of active users
+            tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+
+models:
+  - name: stg_redshift_sales
+    description: Cleaned and standardized sales data from Redshift
+    columns:
+      - name: date_key
+        description: Date of the sales data
+        tests:
+          - not_null
+          - unique
+      - name: total_revenue
+        description: Total revenue for the day
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      - name: has_revenue_data
+        description: Flag indicating if revenue data is available
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: delivery_rate_pct
+        description: Percentage of orders delivered
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+
+  - name: stg_bigquery_marketing
+    description: Cleaned and standardized marketing data from BigQuery
+    columns:
+      - name: date_key
+        description: Date of the marketing data
+        tests:
+          - not_null
+          - unique
+      - name: total_spend
+        description: Total marketing spend for the day
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      - name: roas_tier
+        description: ROAS performance tier
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Excellent', 'Good', 'Break-even', 'Poor']
+      - name: calculated_ctr
+        description: Calculated click-through rate
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+
+  - name: stg_snowflake_engagement
+    description: Cleaned and standardized engagement data from Snowflake
+    columns:
+      - name: date_key
+        description: Date of the engagement data
+        tests:
+          - not_null
+          - unique
+      - name: active_users
+        description: Number of active users
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+      - name: engagement_quality
+        description: Overall engagement quality tier
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['High', 'Medium', 'Low', 'Very Low']
+      - name: engagement_score
+        description: Calculated engagement score (0-100)
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true

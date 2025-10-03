@@ -1,0 +1,29 @@
+# dbt profiles configuration for Snowflake connection
+unified_dw:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: your-snowflake-account
+      user: your-username
+      password: your-password
+      role: your-role
+      database: UNIFIED_DW
+      warehouse: your-warehouse
+      schema: analytics
+      threads: 4
+      keepalives_idle: 240
+      search_path: UNIFIED_DW.analytics
+      
+    prod:
+      type: snowflake
+      account: your-snowflake-account
+      user: your-prod-username
+      password: your-prod-password
+      role: your-prod-role
+      database: UNIFIED_DW_PROD
+      warehouse: your-prod-warehouse
+      schema: analytics
+      threads: 8
+      keepalives_idle: 240
+      search_path: UNIFIED_DW_PROD.analytics
